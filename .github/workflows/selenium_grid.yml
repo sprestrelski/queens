@@ -20,16 +20,13 @@ jobs:
         
        # Need to fetch reqs if needed
       - name: Installing all necessary packages
-        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
-      - name: Install xvfb
-        run: sudo apt-get install xvfb
+        run: pip install selenium 
       - name: Write secret to file
         run: |
           cat << EOF > ./config.py
-          username = '${{ secrets.TEST_USERNAME }}'
-          password = '${{ secrets.TEST_PASSWORD }}'
+          username = '${{ secrets.IN_USERNAME }}'
+          password = '${{ secrets.IN_PASSWORD }}'
           EOF
-          cat config.py
       - name: Run grid script
         run: python auto_selenium_grid.py
         
