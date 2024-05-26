@@ -54,7 +54,7 @@ driver.implicitly_wait(1)
 
 # navigate
 driver.get("https://www.linkedin.com/games/queens/")
-driver.save_screenshot('debug/{formatted_date}.png')
+driver.save_screenshot('debug.png')
 # with open("debug/{formatted_date}.html", "w", encoding='utf-8') as f:
 #     f.write(driver.page_source)
 
