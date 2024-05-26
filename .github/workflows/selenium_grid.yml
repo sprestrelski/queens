@@ -22,7 +22,7 @@ jobs:
       - name: Install xvfb
         run: sudo apt-get install xvfb
       - name: Create config.py
-        run |
+        run: |
          echo "username = '${{ secrets.IN_USERNAME }}'" >> config.py
          echo "password = '${{ secrets.IN_PASSWORD }}'" >> config.py
 
