@@ -5,26 +5,26 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-import chromedriver_autoinstaller
-from pyvirtualdisplay import Display
+# import chromedriver_autoinstaller
+# from pyvirtualdisplay import Display
 
 today = datetime.today()
 formatted_date = today.strftime("%m_%d_%Y")
 
-display = Display(visible=0, size=(800, 800))  
-display.start()
+# display = Display(visible=0, size=(800, 800))  
+# display.start()
 
-chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
-                                      # and if it doesn't exist, download it automatically,
-                                      # then add chromedriver to path
+# chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+#                                       # and if it doesn't exist, download it automatically,
+#                                       # then add chromedriver to path
 
 chrome_options = webdriver.ChromeOptions()    
 options = [
   # Define window size here
    "--window-size=1200,1200",
-    "--ignore-certificate-errors"
+    "--ignore-certificate-errors",
  
-    #"--headless",
+    "--headless"
     #"--disable-gpu",
     #"--window-size=1920,1200",
     #"--ignore-certificate-errors",
@@ -45,16 +45,17 @@ driver.get("https://www.linkedin.com/login")
 username = driver.find_element(By.XPATH, "//input[@name='session_key']")
 password = driver.find_element(By.XPATH, "//input[@name='session_password']")
 
-username.send_keys("username")
-password.send_keys("password")
+username.send_keys(config.username)
+password.send_keys(config.password)
+driver.save_screenshot('debug/nav.png')
 
 login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
 login_button.click()
 driver.implicitly_wait(1)
-
+driver.save_screenshot('debug/login.png')
 # navigate
 driver.get("https://www.linkedin.com/games/queens/")
-driver.save_screenshot('debug.png')
+driver.save_screenshot('debug/queens.png')
 # with open("debug/{formatted_date}.html", "w", encoding='utf-8') as f:
 #     f.write(driver.page_source)
 

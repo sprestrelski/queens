@@ -23,11 +23,13 @@ jobs:
         run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
       - name: Install xvfb
         run: sudo apt-get install xvfb
-      - name: Create config.py
+      -  name: Write secret to file
         run: |
-         echo "username = '${{ secrets.IN_USERNAME }}'" >> config.py
-         echo "password = '${{ secrets.IN_PASSWORD }}'" >> config.py
-
+          cat << EOF > ./config.py
+          username = '${{ secrets.TEST_USERNAME }}'
+          password = '${{ secrets.TEST_PASSWORD }}'
+          EOF
+          cat config.py
       - name: Run grid script
         run: python auto_selenium_grid.py
         
