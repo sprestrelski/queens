@@ -45,8 +45,8 @@ driver.get("https://www.linkedin.com/login")
 username = driver.find_element(By.XPATH, "//input[@name='session_key']")
 password = driver.find_element(By.XPATH, "//input[@name='session_password']")
 
-username.send_keys(config.username)
-password.send_keys(config.password)
+username.send_keys("username")
+password.send_keys("password")
 
 login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
 login_button.click()
