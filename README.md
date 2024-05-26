@@ -10,7 +10,7 @@ password = 'password'
 
 
 ## pull grid off linkedin
-- using selenium in github actions: https://github.com/jsoma/selenium-github-actions
+- using selenium in github actions: https://github.com/MarketingPipeline/Python-Selenium-Action
 - how to scrape linkedin: https://www.bardeen.ai/answers/how-to-scrape-linkedin-with-selenium
 
 ## convert html to representation of star grid
