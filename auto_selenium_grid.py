@@ -55,8 +55,8 @@ driver.implicitly_wait(1)
 # navigate
 driver.get("https://www.linkedin.com/games/queens/")
 driver.save_screenshot('debug/{formatted_date}.png')
-with open("debug/{formatted_date}.html", "w", encoding='utf-8') as f:
-    f.write(driver.page_source)
+# with open("debug/{formatted_date}.html", "w", encoding='utf-8') as f:
+#     f.write(driver.page_source)
 
 # try:
 #     start_game = driver.find_element(By.XPATH, "//span[text()='Start game']")
