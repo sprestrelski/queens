@@ -1,4 +1,4 @@
-name: Run Selenium On GitHub Action
+name: Fetch grid from LinkedIn
 on:
   workflow_dispatch:
 jobs:
@@ -21,14 +21,18 @@ jobs:
         run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
       - name: Install xvfb
         run: sudo apt-get install xvfb
+      - name: Create config.py
+        run |
+         echo "username = '${{ secrets.IN_USERNAME }}'" >> config.py
+         echo "password = '${{ secrets.IN_PASSWORD }}'" >> config.py
 
-      - name: Running the Python script
-        run: python Selenium-Template.py
+      - name: Run grid script
+        run: python auto_selenium_grid.py
         
-      - name: Commit and Push The Results From Python Selenium Action
+      - name: Commit new grid
         run: |
          git config --global user.name "Samantha Prestrelski"
-         git config --global user.email "33042752+sprestrelski@users.noreply.github.com. "
+         git config --global user.email "33042752+sprestrelski@users.noreply.github.com"
          git add -A
-         git commit -m "GitHub Actions Results added"
+         git commit -m "new grid added"
          git push
