@@ -54,9 +54,13 @@ try:
     start_game = driver.find_element(By.XPATH, "//span[text()='Start game']")
     start_game.click()
 except Exception as e:
+    print(e)
     print("start game failed, trying resume game")
     resume_game = driver.find_element(By.XPATH, "//span[text()='Resume game']")
     resume_game.click()
+finally:
+    print("man")
+    final_try = driver.find_element(By.XPATH, "//button[@id='ember34']")
 
 # dimiss instructions
 try:
