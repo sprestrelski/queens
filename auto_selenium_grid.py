@@ -40,44 +40,44 @@ driver.implicitly_wait(1)
 driver.get("https://www.linkedin.com/games/queens/")
 driver.save_screenshot('debug/queens.png')
 
-with open("debug/{formatted_date}.html", "w", encoding='utf-8') as f:
+with open(f"debug/{formatted_date}.html", "w", encoding='utf-8') as f:
     f.write(driver.page_source)
 
-try:
-    start_game = driver.find_element(By.XPATH, "//span[text()='Start game']")
-    start_game.click()
-except Exception as e:
-    print(e)
-    print("start game failed, trying resume game")
-    resume_game = driver.find_element(By.XPATH, "//span[text()='Resume game']")
-    resume_game.click()
-finally:
-    print("man")
+# try:
+#     start_game = driver.find_element(By.XPATH, "//span[text()='Start game']")
+#     start_game.click()
+# except Exception as e:
+#     print(e)
+#     print("start game failed, trying resume game")
+#     resume_game = driver.find_element(By.XPATH, "//span[text()='Resume game']")
+#     resume_game.click()
+# finally:
+#     print("man")
 
-# dimiss instructions
-try:
-    dismiss_button = driver.find_element(By.CSS_SELECTOR, "[aria-label='Dismiss']")
-    dismiss_button.click()
-except Exception as e:
-    print("no need to dismiss")
+# # dimiss instructions
+# try:
+#     dismiss_button = driver.find_element(By.CSS_SELECTOR, "[aria-label='Dismiss']")
+#     dismiss_button.click()
+# except Exception as e:
+#     print("no need to dismiss")
 
-# grab grid
-cells = driver.find_elements(By.CLASS_NAME, "queens-cell")
-colors = []
-for cell in cells:
-    class_attribute = cell.get_attribute('class')
-    # Extract the color from the class attribute
-    color = class_attribute.split('cell-color-')[1][0]
-    colors.append(int(color))
-print(colors)
+# # grab grid
+# cells = driver.find_elements(By.CLASS_NAME, "queens-cell")
+# colors = []
+# for cell in cells:
+#     class_attribute = cell.get_attribute('class')
+#     # Extract the color from the class attribute
+#     color = class_attribute.split('cell-color-')[1][0]
+#     colors.append(int(color))
+# print(colors)
 
-# quit selenium
-driver.quit()
+# # quit selenium
+# driver.quit()
 
-# save grid to txt
-file_path = f"grids/{formatted_date}.txt"
+# # save grid to txt
+# file_path = f"grids/{formatted_date}.txt"
 
-with open(file_path, 'w') as filehandle:
-    json.dump(colors, filehandle)
+# with open(file_path, 'w') as filehandle:
+#     json.dump(colors, filehandle)
 
-print(f"saved to {file_path}")
+# print(f"saved to {file_path}")
