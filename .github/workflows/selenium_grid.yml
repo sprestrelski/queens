@@ -1,5 +1,7 @@
 name: Fetch grid from LinkedIn
 on:
+  push:
+    branches: ["main", "actions"]
   workflow_dispatch:
 jobs:
   scrape:
