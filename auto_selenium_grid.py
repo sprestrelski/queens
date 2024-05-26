@@ -7,6 +7,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import chromedriver_autoinstaller
 from pyvirtualdisplay import Display
+
+today = datetime.today()
+formatted_date = today.strftime("%m_%d_%Y")
+
 display = Display(visible=0, size=(800, 800))  
 display.start()
 
@@ -50,44 +54,45 @@ driver.implicitly_wait(1)
 
 # navigate
 driver.get("https://www.linkedin.com/games/queens/")
-try:
-    start_game = driver.find_element(By.XPATH, "//span[text()='Start game']")
-    start_game.click()
-except Exception as e:
-    print(e)
-    print("start game failed, trying resume game")
-    resume_game = driver.find_element(By.XPATH, "//span[text()='Resume game']")
-    resume_game.click()
-finally:
-    print("man")
-    final_try = driver.find_element(By.XPATH, "//button[@id='ember34']")
+driver.save_screenshot('debug/{formatted_date}.png')
+with open("debug/{formatted_date}.html", "w", encoding='utf-8') as f:
+    f.write(driver.page_source)
 
-# dimiss instructions
-try:
-    dismiss_button = driver.find_element(By.CSS_SELECTOR, "[aria-label='Dismiss']")
-    dismiss_button.click()
-except Exception as e:
-    print("no need to dismiss")
+# try:
+#     start_game = driver.find_element(By.XPATH, "//span[text()='Start game']")
+#     start_game.click()
+# except Exception as e:
+#     print(e)
+#     print("start game failed, trying resume game")
+#     resume_game = driver.find_element(By.XPATH, "//span[text()='Resume game']")
+#     resume_game.click()
+# finally:
+#     print("man")
 
-# grab grid
-cells = driver.find_elements(By.CLASS_NAME, "queens-cell")
-colors = []
-for cell in cells:
-    class_attribute = cell.get_attribute('class')
-    # Extract the color from the class attribute
-    color = class_attribute.split('cell-color-')[1][0]
-    colors.append(int(color))
-print(colors)
+# # dimiss instructions
+# try:
+#     dismiss_button = driver.find_element(By.CSS_SELECTOR, "[aria-label='Dismiss']")
+#     dismiss_button.click()
+# except Exception as e:
+#     print("no need to dismiss")
 
-# quit selenium
-driver.quit()
+# # grab grid
+# cells = driver.find_elements(By.CLASS_NAME, "queens-cell")
+# colors = []
+# for cell in cells:
+#     class_attribute = cell.get_attribute('class')
+#     # Extract the color from the class attribute
+#     color = class_attribute.split('cell-color-')[1][0]
+#     colors.append(int(color))
+# print(colors)
 
-# save grid to txt
-today = datetime.today()
-formatted_date = today.strftime("%m_%d_%Y")
-file_path = f"grids/{formatted_date}.txt"
+# # quit selenium
+# driver.quit()
 
-with open(file_path, 'w') as filehandle:
-    json.dump(colors, filehandle)
+# # save grid to txt
+# file_path = f"grids/{formatted_date}.txt"
 
-print(f"saved to {file_path}")
+# with open(file_path, 'w') as filehandle:
+#     json.dump(colors, filehandle)
+
+# print(f"saved to {file_path}")
