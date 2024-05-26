@@ -34,6 +34,7 @@ password.send_keys(config.password)
 
 login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
 login_button.click()
+driver.save_screenshot('debug/postclick.png')
 driver.implicitly_wait(1)
 
 # navigate
