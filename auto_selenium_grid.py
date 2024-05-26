@@ -26,6 +26,7 @@ driver = webdriver.Chrome(options = chrome_options)
 
 # login
 driver.get("https://www.linkedin.com/login")
+driver.implicitly_wait(1)
 username = driver.find_element(By.XPATH, "//input[@name='session_key']")
 password = driver.find_element(By.XPATH, "//input[@name='session_password']")
 
@@ -34,6 +35,7 @@ password.send_keys(config.password)
 
 login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
 login_button.click()
+driver.implicitly_wait(5)
 driver.save_screenshot('debug/postclick.png')
 driver.implicitly_wait(1)
 
