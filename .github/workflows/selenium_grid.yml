@@ -23,7 +23,7 @@ jobs:
         run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
       - name: Install xvfb
         run: sudo apt-get install xvfb
-      -  name: Write secret to file
+      - name: Write secret to file
         run: |
           cat << EOF > ./config.py
           username = '${{ secrets.TEST_USERNAME }}'
