@@ -13,3 +13,14 @@
 .cell.selected {
     border: 2px solid rgb(0,0,255);
 }
+
+@media only screen and (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(var(--cols), 8vw);
+    }
+
+    .cell {
+        width: 8vw; 
+        height: 8vw;
+    }
+}

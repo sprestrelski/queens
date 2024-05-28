@@ -26,9 +26,10 @@ colors = extract_grid_from_html(html_file_path)
 
 today = datetime.today()
 formatted_date = today.strftime("%m_%d_%Y")
-file_path = f"grids/{formatted_date}.txt"
+file_path = f"public/_grids/{formatted_date}.json"
 
-with open(file_path, 'w') as filehandle:
-    json.dump(colors, filehandle)
+data = {"gridData":colors}
+with open(file_path, 'w') as f:
+    json.dump(data, f)
 
 print(f"Grid saved to {file_path}")

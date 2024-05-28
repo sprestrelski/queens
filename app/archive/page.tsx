@@ -1,7 +1,18 @@
 import Grid from "../components/Grid";
+import fs from 'fs';
+import path from 'path';
+
+const gridsFolder = path.join(process.cwd(), 'public', '_grids');
 
 export default function ArchivePage() {
-  const dates = ["05_27_2024", "05_26_2024", "05_25_2024", "05_24_2024", "05_23_2024"]
+  const getFilesInFolder = (folderPath: fs.PathLike) => {
+    const files = fs.readdirSync(folderPath);
+    return files
+      .filter(file => path.extname(file).toLowerCase() === '.json')
+      .map(file => path.parse(file).name);
+  };
+
+  const dates = getFilesInFolder(gridsFolder).reverse();
 
   return (
     <>
