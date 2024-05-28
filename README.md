@@ -11,7 +11,7 @@ username = 'username'
 password = 'password'
 ```
 
-### 
+### manually upload
 instead, `upload_grid.py` takes in the html download of the site and outputs the grid
 
 ## convert html to representation of star grid
@@ -30,5 +30,12 @@ colors
 ```
 
 ## show grid
+site built using react redux!  
+
+to run
+```
+npm install
+npm run dev
+```
 
 ## logic for gameplay
