@@ -23,11 +23,29 @@ const Grid = ({ date }: { date: string }) => {
       );
   }, [date]);
 
-  const [selectedCell, setSelectedCell] = useState<number | null>(null);
+  const [cellStates, setCellStates] = useState<(null | "X" | "Q")[]>([]);
   const cols = Math.sqrt(gridData.length)
 
+  useEffect(() => {
+    setCellStates(new Array(gridData.length).fill(null));
+  }, [gridData]);
+
   const handleCellClick = (cellIndex: number) => {
-    setSelectedCell(cellIndex);
+    const newCellStates = [...cellStates];
+    switch (newCellStates[cellIndex]) {
+      case null: 
+        newCellStates[cellIndex] = "X";
+        break;
+      case "X":
+        newCellStates[cellIndex] = "Q";
+        break;
+      case "Q":
+        newCellStates[cellIndex] = null;
+        break;
+      default:
+        break;
+    }
+    setCellStates(newCellStates);
   };
 
   return (
@@ -39,10 +57,12 @@ const Grid = ({ date }: { date: string }) => {
           {gridData.map((color, index) => (
             <div
               key={index}
-              className={`${styles.cell} ${selectedCell === index ? styles.selected : ""}`}
+              className={`${styles.cell}`}
               style={{ backgroundColor: getColor(color) }}
               onClick={() => handleCellClick(index)}
-            ></div>
+            >
+              {cellStates[index]}
+            </div>
           ))}
         </div>
       ) }
