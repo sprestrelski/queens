@@ -9,7 +9,7 @@ export default function IndexPage() {
     return `${month}_${day}_${year}`;
   };
 
-  const todayDate = formatDate(new Date());
+  const todayDate = formatDate(new Date(new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles"})));
 
   return (
     <>
