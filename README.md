@@ -1,17 +1,18 @@
 # queens archive
 hi i want to keep an archive of linkedin queens bc i like the game! anyway
 
-## run program
+## pull grid off linkedin 
+using selenium will work, but not from a github action due to linkedin's security checks. leaving the selenium script up for posterity
+
+### run selenium
 to run locally, make a config.py file with the words
 ```
 username = 'username'
 password = 'password'
 ```
 
-
-## pull grid off linkedin
-- using selenium in github actions: https://github.com/jsoma/selenium-github-actions
-- how to scrape linkedin: https://www.bardeen.ai/answers/how-to-scrape-linkedin-with-selenium
+### 
+instead, `upload_grid.py` takes in the html download of the site and outputs the grid
 
 ## convert html to representation of star grid
 colors

@@ -32,7 +32,7 @@ except Exception as e:
     resume_game = driver.find_element(By.XPATH, "//span[text()='Resume game']")
     resume_game.click()
 
-# dimiss instructions
+# dismiss instructions
 try:
     dismiss_button = driver.find_element(By.CSS_SELECTOR, "[aria-label='Dismiss']")
     dismiss_button.click()
