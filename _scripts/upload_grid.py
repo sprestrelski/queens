@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import json
 from datetime import datetime
+import shutil, os
 
 def extract_grid_from_html(html_file_path):
     with open(html_file_path, 'r', encoding='utf-8') as file:
@@ -33,3 +34,5 @@ with open(file_path, 'w') as f:
     json.dump(data, f)
 
 print(f"Grid saved to {file_path}")
+shutil.rmtree("./queens_files")
+os.remove(html_file_path)
