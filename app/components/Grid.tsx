@@ -92,6 +92,8 @@ const getColor = (colorNumber: number): string => {
       return "khaki";
     case 9:
       return "tan";
+    case 10:
+      return "aqua"
     default:
       return "black";
   }
