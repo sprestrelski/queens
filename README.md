@@ -27,6 +27,8 @@ colors
 7: red
 8: yellow
 9: brown 
+10: aqua
+11: violet
 ```
 
 ## show grid

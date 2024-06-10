@@ -94,6 +94,8 @@ const getColor = (colorNumber: number): string => {
       return "tan";
     case 10:
       return "aqua";
+    case 11:
+      return "violet";
     default:
       return "black";
   }
