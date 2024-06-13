@@ -33,6 +33,7 @@ data = {"gridData":colors}
 with open(file_path, 'w') as f:
     json.dump(data, f)
 
-print(f"Grid saved to {file_path}")
+# print(f"Grid saved to {file_path}")
+print(f"{formatted_date}.json")
 shutil.rmtree("./queens_files")
 os.remove(html_file_path)
