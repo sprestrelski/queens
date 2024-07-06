@@ -53,7 +53,7 @@ const Grid = ({ date }: { date: string }) => {
       {error ? (
         <p> {date}'s grid hasn't been uploaded yet! check back later </p>
       ) : (
-        <div className={styles.grid} style={{"--cols":cols} as React.CSSProperties}>
+        <div className={`${styles.grid} noselect`}  style={{"--cols":cols} as React.CSSProperties}>
           {gridData.map((color, index) => (
             <div
               key={index}
